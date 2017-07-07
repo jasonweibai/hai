@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+    </head>
+    <body>
+      <h1>注册页面</h1>
+      <input type="text" placeholder='请输入用户名' id="user" name="username">
+      <div id="d1"></div>
+      <script>
+        //绑定失去焦点事件
+        document.getElementById('user').onblur=function(){
+        	//1.创建xhr
+        	 var xhr = new XMLHttpRequest();
+        	//2.建立连接  get
+        	xhr.open("get","ajax_check.php?username="+this.value);
+        	//3.发送请求
+        	xhr.send();
+        	//4.注册监听
+        	xhr.onreadystatechange=function(){
+        	//5.   console.log(xhr.responseText) no succ
+        	 if(xhr.readyState==4 && xhr.status==200){
+        	//     如果返回结果是 no  alert('用户名已注册')
+        	//     如果返回的是 succ  alert('用户名可以使用') 
+        	   if(xhr.responseText=='no'){
+        		alert('用户名已注册');
+        	  }else{
+        		alert('用户名可以使用');
+        	}  
+          }
+        }
+    }
+
+
+
+      </script>
+    </body>
+</html>

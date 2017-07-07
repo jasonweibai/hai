@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+    </head>
+    <body>
+    	<h1 id="h1">发送get请求的Ajax——基础语言</h1>
+        <input type="button" value="发送Ajax_get请求" id="btn">
+        <script>
+           //绑定一个onclick 点击事件
+           document.getElementById('btn').onclick = function(){
+           	  //创建xhr
+           	  var xhr = new XMLHttpRequest();
+           	  //建立连接
+           	  xhr.open("get","Ajaxlianxi.php",true);
+           	  //发送请求
+           	  xhr.send();
+           	  //注册监听
+           	  xhr.onreadystatechange=function(){
+           	  	if(xhr.readyState==4 && xhr.status==200){
+           	  		//修改页面的显示
+           	  		document.getElementById('h1').innerHTML = xhr.responseText;
+           	  	}
+           	  }
+           	  //将获取到的内容显示到页面上
+           }
+
+
+
+        </script>
+    </body>
+</html>
